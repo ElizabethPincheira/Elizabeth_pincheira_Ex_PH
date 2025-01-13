@@ -16,10 +16,16 @@ export class FormularioCrearPublicacionComponent  implements OnInit {
   tituloPublicacion : string = '' ;
   descripcionPublicacion :string = '';
 
+
+
   constructor() { 
     addIcons({cameraOutline});
   }
 
   ngOnInit() {}
+
+  guardarPublicacion(){
+    console.log("se presiona boton GUARDAR")
+  }
 
 }
