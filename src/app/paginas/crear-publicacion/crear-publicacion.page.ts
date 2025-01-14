@@ -14,7 +14,7 @@ import { FormularioCrearPublicacionComponent } from 'src/app/componentes/formula
 })
 export class CrearPublicacionPage implements OnInit {
 
-  constructor() { }
+  constructor() {} 
 
   ngOnInit() {
   }

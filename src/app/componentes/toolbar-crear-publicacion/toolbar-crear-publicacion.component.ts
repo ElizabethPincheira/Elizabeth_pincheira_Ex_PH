@@ -5,9 +5,6 @@ import { addIcons } from 'ionicons';
 import { arrowBackOutline } from 'ionicons/icons'
 import { RouterModule } from '@angular/router';
 
-
-
-
 @Component({
   selector: 'app-toolbar-crear-publicacion',
   templateUrl: './toolbar-crear-publicacion.component.html',

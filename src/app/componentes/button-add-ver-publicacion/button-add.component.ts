@@ -4,7 +4,6 @@ import { addIcons } from 'ionicons';
 import { add } from 'ionicons/icons'
 import { RouterModule } from '@angular/router';
 
-
 @Component({
   selector: 'app-button-add',
   templateUrl: './button-add.component.html',
