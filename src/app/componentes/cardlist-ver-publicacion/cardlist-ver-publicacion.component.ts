@@ -17,7 +17,7 @@ export class CardlistVerPublicacionComponent  implements OnInit {
 
 
 
-  // @Input() publicacion:Publicacion[] = []
+  @Input() publicacion:Publicacion[] = []
 
   constructor(private publicacionService:PublicacionService) { 
     addIcons({trashOutline});

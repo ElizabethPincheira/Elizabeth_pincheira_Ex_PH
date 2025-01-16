@@ -1,5 +1,5 @@
 <form #miFormulario="ngForm" (ngSubmit)="agregar()">
-  <ion-item lines="none">
+  <ion-item lines="none" >
     <ion-input [(ngModel)]="tituloPublicacion" label="Título" labelPlacement="stacked" name="titulo"
       placeholder="Título de la publicación"></ion-input>
   </ion-item>
@@ -17,6 +17,6 @@
       placeholder="Descripción de la publicación"></ion-input>
   </ion-item>
   <ion-item lines="none">
-    <ion-button (click)="guardarPublicacion()">GUARDAR</ion-button>
+    <ion-button (click)="guardarPublicacion()" >GUARDAR</ion-button>
   </ion-item>
 </form>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { IonInput, IonItem, IonButton, IonIcon, IonThumbnail } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons'
 import { cameraOutline} from 'ionicons/icons'
@@ -17,11 +17,10 @@ export class FormularioCrearPublicacionComponent  implements OnInit {
   tituloPublicacion : string = '' ;
   descripcionPublicacion :string = '';
 
-  // onCreate = new EventEmitter<{titulo:string;desccripcion:string}>()
 
-// *********
-//   @Output() onCreate = new EventEmitter<{frase:string;autor:string}>()
-// *******
+
+   @Output() onCreate = new EventEmitter<{titulo:string,descripcion:string}>();
+
 
 
   constructor() { 
@@ -31,9 +30,9 @@ export class FormularioCrearPublicacionComponent  implements OnInit {
   ngOnInit() {}
 
   guardarPublicacion(){
-    // this.onCreate.emit({titulo:this.tituloPublicacion, descripcion:this.descripcionPublicacion})
-    // this.tituloPublicacion= '';
-    // this.descripcionPublicacion = '';
+    this.onCreate.emit({titulo:this.tituloPublicacion, descripcion:this.descripcionPublicacion})
+    this.tituloPublicacion= '';
+    this.descripcionPublicacion = '';
     console.log("se presiona boton GUARDAR")
   }
 
