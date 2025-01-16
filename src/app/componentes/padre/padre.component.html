@@ -1,5 +1,5 @@
-<app-cardlist-ver-publicacion [publicacion]="listaPublicaciones"/>
-<app-formulario-crear-publicacion (onCreate)="onCreatePublicacion($event)"/>
+<app-cardlist-ver-publicacion [publicacion]="listaPublicaciones" *ngIf="mostrarFormulario"/>
+<app-formulario-crear-publicacion (onCreate)="onCreatePublicacion($event)" *ngIf="!mostrarFormulario"/>
 
 <!-- <ng-container *ngIf="mostrarFormulario; else mostrarLista">
     <app-formulario-crear-publicacion (onCreate)="onCreatePublicacion($event)"></app-formulario-crear-publicacion>
@@ -9,3 +9,5 @@
     <app-cardlist-ver-publicacion [publicacion]="listaPublicaciones"></app-cardlist-ver-publicacion>
   </ng-template> -->
   
+  <!-- <app-formulario *ngIf="mostrarFormulario"></app-formulario>
+  <app-lista *ngIf="!mostrarFormulario"></app-lista> -->
