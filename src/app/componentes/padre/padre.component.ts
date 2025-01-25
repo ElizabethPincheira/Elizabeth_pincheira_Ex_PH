@@ -16,6 +16,12 @@ export class PadreComponent implements OnInit {
 
   constructor(private publicacionService: PublicacionService) { }
 
+  deleteContacto(publicacion:Publicacion){
+    console.log("boton elimina publicación" + publicacion.titulo)
+    
+  }
+
+
   @Input() mostrarFormulario: boolean = false;
 
   listaPublicaciones: Publicacion[] = []

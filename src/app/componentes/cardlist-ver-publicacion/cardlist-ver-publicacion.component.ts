@@ -21,7 +21,7 @@ export class CardlistVerPublicacionComponent  implements OnInit {
 
   @Input() publicacion:Publicacion[] = []
 
-   //@Output() onDelete = new EventEmitter<Publicacion>()
+  @Output() onDelete = new EventEmitter<Publicacion>()
 
   constructor(private publicacionService:PublicacionService) { 
     addIcons({trashOutline});
@@ -37,17 +37,28 @@ export class CardlistVerPublicacionComponent  implements OnInit {
 
 
 
-  async cargarInicial(){
-    const p:Publicacion = {
-      titulo: "mariposa",
-      descripcion:"kfkgkgkkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkkgkgkg", 
-      imagen:"hfhghghghgh"};
+  //ELIMINAR PUBLICACION
+  clickEliminar(p:Publicacion){
+    this.onDelete.emit(p)
+  }
 
-    await this.publicacionService.agregarPublicacion(p)
+
+
+async cargarInicial() {
+    // Crear la publicación directamente en el método de servicio
+    const nuevaPublicacion: Publicacion = {
+      titulo: "mariposa",
+      descripcion: "kfkgkgkkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkkgkgkg", 
+      imagen: "hfhghghghgh"
+    };
+
+    await this.publicacionService.agregarPublicacion(nuevaPublicacion);
     
-    console.log('Publicación agregada:', p);
+    console.log('Publicación agregada:', nuevaPublicacion);
     this.agenda = await this.publicacionService.getPublicacion();
     console.log('Publicaciones cargadas:', this.agenda);
+
+
   }
 
 }

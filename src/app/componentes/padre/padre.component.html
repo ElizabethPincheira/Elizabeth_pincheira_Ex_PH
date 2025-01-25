@@ -1,13 +1,2 @@
-<app-cardlist-ver-publicacion [publicacion]="listaPublicaciones" *ngIf="mostrarFormulario"/>
+<app-cardlist-ver-publicacion [publicacion]="listaPublicaciones" *ngIf="mostrarFormulario" (onDelete)="deleteContacto($event)"/>
 <app-formulario-crear-publicacion (onCreate)="onCreatePublicacion($event)" *ngIf="!mostrarFormulario"/>
-
-<!-- <ng-container *ngIf="mostrarFormulario; else mostrarLista">
-    <app-formulario-crear-publicacion (onCreate)="onCreatePublicacion($event)"></app-formulario-crear-publicacion>
-  </ng-container>
-  
-  <ng-template #mostrarLista>
-    <app-cardlist-ver-publicacion [publicacion]="listaPublicaciones"></app-cardlist-ver-publicacion>
-  </ng-template> -->
-  
-  <!-- <app-formulario *ngIf="mostrarFormulario"></app-formulario>
-  <app-lista *ngIf="!mostrarFormulario"></app-lista> -->
