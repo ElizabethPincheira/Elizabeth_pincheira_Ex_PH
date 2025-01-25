@@ -16,11 +16,15 @@ export class FormularioCrearPublicacionComponent  implements OnInit {
 
   tituloPublicacion : string = '' ;
   descripcionPublicacion :string = '';
-
+//agregar img : string ='';
 
 
    @Output() onCreate = new EventEmitter<{titulo:string,descripcion:string}>();
+//agregar la img al output
 
+
+mensajeTituloPublicacion: boolean = false
+mensajeDescripcionPublicacion: boolean = false
 
 
   constructor() { 
@@ -29,13 +33,30 @@ export class FormularioCrearPublicacionComponent  implements OnInit {
 
   ngOnInit() {}
 
-  guardarPublicacion(){
-    this.onCreate.emit({titulo:this.tituloPublicacion, descripcion:this.descripcionPublicacion})
-    this.tituloPublicacion= '';
-    this.descripcionPublicacion = '';
-    console.log("se presiona boton GUARDAR")
-  }
+  
+  agregar(){
+    //VALIDACIONES
+    // Reinicia los mensajes de error antes de validar
 
-  agregar(){}
+    this.mensajeTituloPublicacion = false
+    this.mensajeDescripcionPublicacion = false
+
+    if (this.tituloPublicacion.length < 5) {
+      console.log("El título debe tener al menos 5 caracteres");
+      this.mensajeTituloPublicacion = true;
+    }
+  
+    if (this.descripcionPublicacion.length < 20) {
+      console.log("La descripción debe tener al menos 20 caracteres");
+      this.mensajeDescripcionPublicacion = true;
+    }
+  
+    // Solo emite el evento si no hay errores
+    if (!this.mensajeTituloPublicacion && !this.mensajeDescripcionPublicacion) {
+      this.onCreate.emit({ titulo: this.tituloPublicacion, descripcion: this.descripcionPublicacion });
+      this.tituloPublicacion = '';
+      this.descripcionPublicacion = '';
+    }
+  }
 
 }
