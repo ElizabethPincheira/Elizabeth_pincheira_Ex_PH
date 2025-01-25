@@ -6,12 +6,12 @@
   <p *ngIf="mensajeTituloPublicacion">El campo frase debe tener al menos 5 caracteres</p> 
 
   <div class="container">
-    <ion-button size="small">
+    <ion-button size="small" (click)="tomarFoto()">
       <ion-icon slot="start" name="camera-outline"></ion-icon>
       FOTOGRAFÍA
     </ion-button>
-    <ion-thumbnail slot="start">
-      <!-- <ion-img [src]="'data:image/jpeg;base64,'+fotoBase64"/> -->
+    <ion-thumbnail slot="start" *ngFor="let f of fotos">
+      <ion-img [src]="'data:image/jpeg;base64,'+f"/>
     </ion-thumbnail>
   </div>
   <ion-item lines="none">
