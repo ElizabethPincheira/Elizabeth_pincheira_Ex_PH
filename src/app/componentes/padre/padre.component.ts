@@ -42,7 +42,8 @@ export class PadreComponent implements OnInit {
     const nuevapublicacion: Publicacion = {
       titulo: $event.titulo,
       descripcion: $event.descripcion,
-      imagen: '' // Asumiendo que 'imagen' es obligatorio, puedes dejarlo vacío o asignarle un valor.
+      imagen: '',
+      fecha: new Date().toISOString() 
     };
 
     // Usar el servicio para agregar la publicación

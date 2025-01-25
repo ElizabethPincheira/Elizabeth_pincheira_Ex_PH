@@ -5,7 +5,7 @@
         alt="The Wisconsin State Capitol building in Madison, WI at night"></ion-img>
     </ion-thumbnail>
     <ion-label>{{ publicacion.titulo }}</ion-label>
-    <p>Date</p>
+    <ion-label > {{ publicacion.fecha | date:'short' }} </ion-label>
     <ion-button (click)="clickEliminar(publicacion)" size="small">
       <ion-icon name="trash-outline" slot="icon-only" md="trash-outline"></ion-icon>
     </ion-button>
@@ -20,8 +20,6 @@
         <ion-button (click)="setModalPriceOpen(false)" >CERRAR</ion-button>
       </ion-buttons> 
     </ion-header>
-
-
   </ng-template>
 </ion-modal>
 
