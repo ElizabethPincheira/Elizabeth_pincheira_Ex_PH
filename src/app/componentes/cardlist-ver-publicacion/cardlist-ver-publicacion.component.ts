@@ -37,12 +37,17 @@ export class CardlistVerPublicacionComponent  implements OnInit {
 
 
 
-
   async cargarInicial(){
-    const p:Publicacion = {titulo: "mariposa",descripcion:"kfkgkgkkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkkgkgkg", imagen:"hfhghghghgh"};
+    const p:Publicacion = {
+      titulo: "mariposa",
+      descripcion:"kfkgkgkkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkkgkgkg", 
+      imagen:"hfhghghghgh"};
+
     await this.publicacionService.agregarPublicacion(p)
+    
+    console.log('Publicación agregada:', p);
     this.agenda = await this.publicacionService.getPublicacion();
-    console.log(this.agenda);
+    console.log('Publicaciones cargadas:', this.agenda);
   }
 
 }

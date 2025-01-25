@@ -14,8 +14,8 @@ private clave = "AGENDA";
   async agregarPublicacion(p:Publicacion) {
     const listado:Publicacion[]=await this.getPublicacion()
     listado.push(p)
-    console.log(listado)
-    Preferences.set({key: this.clave, value: JSON.stringify(listado)})
+    // console.log(listado)
+    await Preferences.set({key: this.clave, value: JSON.stringify(listado)})
   }
 
   //recuperar
