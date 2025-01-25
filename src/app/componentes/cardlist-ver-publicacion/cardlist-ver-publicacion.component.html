@@ -11,6 +11,21 @@
     </ion-button>
   </ion-item>
 </ion-list>
+
+<ion-modal [isOpen]="isModalPriceOpen">
+  <ng-template>
+    <ion-header>
+      <ion-title>Eliminar aviso</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="setModalPriceOpen(false)" >CERRAR</ion-button>
+      </ion-buttons> 
+    </ion-header>
+
+
+  </ng-template>
+</ion-modal>
+
+
 <!-- 
 
 <ion-button size="small" (click)="clickEliminar(publicaciones)">

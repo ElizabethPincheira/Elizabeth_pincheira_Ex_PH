@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { IonItem, IonLabel, IonList, IonThumbnail, IonIcon, IonImg, IonButton } from '@ionic/angular/standalone';
+import { IonItem, IonLabel, IonList, IonThumbnail, IonIcon, IonImg, IonButton, IonModal, IonHeader, IonTitle, IonButtons  } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { trashOutline } from 'ionicons/icons';
 import { CommonModule } from '@angular/common';
@@ -11,16 +11,16 @@ import { PublicacionService } from 'src/app/servicios/publicacion.service'
   templateUrl: './cardlist-ver-publicacion.component.html',
   styleUrls: ['./cardlist-ver-publicacion.component.scss'],
   standalone: true,
-  imports: [IonItem, IonLabel, IonList, IonThumbnail, IonIcon, CommonModule, IonImg, IonButton]
+  imports: [IonItem, IonLabel, IonList, IonThumbnail, IonIcon, CommonModule, IonImg, IonButton, IonModal, IonHeader, IonTitle, IonButtons]
 })
 export class CardlistVerPublicacionComponent implements OnInit {
 
+  isModalPriceOpen:boolean = false;
   //-----
   agenda: Publicacion[] = []
 
 
   @Input() publicacion: Publicacion[] = []
-
   @Output() onDelete = new EventEmitter<Publicacion>()
 
   constructor(private publicacionService: PublicacionService) {
@@ -38,8 +38,10 @@ export class CardlistVerPublicacionComponent implements OnInit {
 
 
   //ELIMINAR PUBLICACION
-  clickEliminar(p: Publicacion) {
+  async clickEliminar(p: Publicacion) {
     this.onDelete.emit(p)
+    this.agenda = await this.publicacionService.getPublicacion();
+    this.setModalPriceOpen(true)
   }
 
 
@@ -48,6 +50,13 @@ export class CardlistVerPublicacionComponent implements OnInit {
     this.agenda = await this.publicacionService.getPublicacion();
     console.log('Publicaciones cargadas:', this.agenda);
   }
+
+  setModalPriceOpen(abierto:boolean) {
+    this.isModalPriceOpen = abierto
+  }
+
+
+
 
 }
 
