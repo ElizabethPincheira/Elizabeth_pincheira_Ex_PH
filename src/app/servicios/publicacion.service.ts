@@ -22,4 +22,6 @@ export class PublicacionService {
     return this._publicaciones
   }
 
+  eliminarPublicación(p:Publicacion){}
+
 }

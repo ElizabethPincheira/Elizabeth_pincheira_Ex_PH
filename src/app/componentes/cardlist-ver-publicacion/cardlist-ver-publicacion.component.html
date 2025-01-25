@@ -6,6 +6,13 @@
     </ion-thumbnail>
     <ion-label>{{ p.titulo }}</ion-label>
     <p>Date</p>
-    <ion-icon name="trash-outline" slot="end"></ion-icon>
+    <ion-button size="small">
+      <ion-icon name="trash-outline" slot="icon-only" md="trash-outline"></ion-icon>
+    </ion-button>
   </ion-item>
 </ion-list>
+<!-- 
+
+<ion-button size="small" (click)="clickEliminar(publicaciones)">
+  <ion-icon name="trash-outline" slot="icon-only" md="trash-outline"></ion-icon>
+</ion-button> -->
