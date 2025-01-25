@@ -24,8 +24,8 @@ export class PadreComponent implements OnInit {
     this._actualizar()
   }
 
-  private _actualizar() {
-    this.listaPublicaciones = this.publicacionService.getPublicacion()
+  private async _actualizar() {
+    this.listaPublicaciones = await this.publicacionService.getPublicacion();
   }
 
   onCreatePublicacion($event: { titulo: string, descripcion: string }) {

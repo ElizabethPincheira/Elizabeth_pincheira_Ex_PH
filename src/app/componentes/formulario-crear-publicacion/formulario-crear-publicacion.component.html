@@ -1,8 +1,10 @@
 <form #miFormulario="ngForm" (ngSubmit)="agregar()">
   <ion-item lines="none" >
-    <ion-input [(ngModel)]="tituloPublicacion" label="Título" labelPlacement="stacked" name="titulo"
+    <ion-input [(ngModel)]="tituloPublicacion" label="Título" labelPlacement="stacked" name="titulo" required
       placeholder="Título de la publicación"></ion-input>
   </ion-item>
+  <p *ngIf="mensajeTituloPublicacion">El campo frase debe tener al menos 5 caracteres</p> 
+
   <div class="container">
     <ion-button size="small">
       <ion-icon slot="start" name="camera-outline"></ion-icon>
@@ -13,10 +15,15 @@
     </ion-thumbnail>
   </div>
   <ion-item lines="none">
-    <ion-input [(ngModel)]="descripcionPublicacion" label="Descripción" labelPlacement="stacked" name="descripcion"
+    <ion-input [(ngModel)]="descripcionPublicacion" label="Descripción" labelPlacement="stacked" name="descripcion" required
       placeholder="Descripción de la publicación"></ion-input>
   </ion-item>
+  <p *ngIf="mensajeDescripcionPublicacion">El campo Autor debe tener al menos 20 caracteres</p> 
+
   <ion-item lines="none">
-    <ion-button (click)="guardarPublicacion()" >GUARDAR</ion-button>
+    <ion-button type="submit" >GUARDAR</ion-button>
   </ion-item>
+
 </form>
+
+

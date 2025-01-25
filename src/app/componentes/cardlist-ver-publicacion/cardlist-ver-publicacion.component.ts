@@ -15,7 +15,9 @@ import { PublicacionService } from 'src/app/servicios/publicacion.service'
 })
 export class CardlistVerPublicacionComponent  implements OnInit {
 
+  //-----
   agenda:Publicacion[]=[]
+
 
   @Input() publicacion:Publicacion[] = []
 
@@ -40,24 +42,9 @@ export class CardlistVerPublicacionComponent  implements OnInit {
     const p:Publicacion = {titulo: "mariposa",descripcion:"kfkgkgkkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkkgkgkg", imagen:"hfhghghghgh"};
     await this.publicacionService.agregarPublicacion(p)
     this.agenda = await this.publicacionService.getPublicacion();
+    console.log(this.agenda);
   }
-
-  // clickEliminar(a:Publicacion) {
-  //   this.onDelete.emit(a);
-  // }
 
 }
 
-// async cargarInicial() {
-//   const p: Publicacion = {
-//     titulo: "mariposa",
-//     descripcion: "kfkgkgkkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkkgkgkg",
-//     imagen: "hfhghghghgh"
-//   };
 
-//   // Llamar a agregarPublicacion con el objeto 'p'
-//   await this.publicacionService.agregarPublicacion(p);
-
-//   // Esperamos la promesa de getPublicacion() y la asignamos a listaPublicaciones
-//   this.listaPublicaciones = await this.publicacionService.getPublicacion();
-// }

@@ -9,39 +9,22 @@ export class PublicacionService {
 
 private clave = "AGENDA";
 
-
-  // private _publicaciones:Publicacion[] = [
-  //   new Publicacion("perrito encontrado","el perrito fue encontrado en ...")
-  //   ,new Publicacion("gatito encontrado","el gatito fue encontrado en ...")
-  //   ,new Publicacion("pajarito encontrado","el pajarito fue encontrado en ...")
-  // ]
-
   constructor() { }
-
   //guardar
   async agregarPublicacion(p:Publicacion) {
-    const listado:Publicacion[]= await this.getPublicacion()
+    const listado:Publicacion[]=await this.getPublicacion()
     listado.push(p)
+    console.log(listado)
     Preferences.set({key: this.clave, value: JSON.stringify(listado)})
   }
 
-
-  //-----------------------
-
-//recuperar
+  //recuperar
   async getPublicacion():Promise<Publicacion[]> {
     const listado = await Preferences.get({key: this.clave })
     return JSON.parse(listado.value ?? "[]");
   }
 
-
-
-
-
-  
-  eliminarPublicación(p:Publicacion){}
-
-
-  buscarContacto(titulo:string){}
 }
 
+
+//----------------------------
