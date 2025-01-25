@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { IonItem, IonLabel, IonList, IonThumbnail, IonIcon, IonImg, IonButton} from '@ionic/angular/standalone';
+import { IonItem, IonLabel, IonList, IonThumbnail, IonIcon, IonImg, IonButton } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { trashOutline } from 'ionicons/icons';
 import { CommonModule } from '@angular/common';
@@ -11,24 +11,24 @@ import { PublicacionService } from 'src/app/servicios/publicacion.service'
   templateUrl: './cardlist-ver-publicacion.component.html',
   styleUrls: ['./cardlist-ver-publicacion.component.scss'],
   standalone: true,
-  imports: [ IonItem, IonLabel, IonList, IonThumbnail, IonIcon, CommonModule, IonImg, IonButton]
+  imports: [IonItem, IonLabel, IonList, IonThumbnail, IonIcon, CommonModule, IonImg, IonButton]
 })
-export class CardlistVerPublicacionComponent  implements OnInit {
+export class CardlistVerPublicacionComponent implements OnInit {
 
   //-----
-  agenda:Publicacion[]=[]
+  agenda: Publicacion[] = []
 
 
-  @Input() publicacion:Publicacion[] = []
+  @Input() publicacion: Publicacion[] = []
 
   @Output() onDelete = new EventEmitter<Publicacion>()
 
-  constructor(private publicacionService:PublicacionService) { 
-    addIcons({trashOutline});
+  constructor(private publicacionService: PublicacionService) {
+    addIcons({ trashOutline });
   }
 
 
-  publicaciones:Publicacion[] = []
+  publicaciones: Publicacion[] = []
 
   ngOnInit(): void {
     // Llamamos a cargarInicial para cargar las publicaciones al iniciar el componente
@@ -38,27 +38,15 @@ export class CardlistVerPublicacionComponent  implements OnInit {
 
 
   //ELIMINAR PUBLICACION
-  clickEliminar(p:Publicacion){
+  clickEliminar(p: Publicacion) {
     this.onDelete.emit(p)
   }
 
 
 
-async cargarInicial() {
-    // Crear la publicación directamente en el método de servicio
-    const nuevaPublicacion: Publicacion = {
-      titulo: "mariposa",
-      descripcion: "kfkgkgkkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkgkkgkgkg", 
-      imagen: "hfhghghghgh"
-    };
-
-    await this.publicacionService.agregarPublicacion(nuevaPublicacion);
-    
-    console.log('Publicación agregada:', nuevaPublicacion);
+  async cargarInicial() {
     this.agenda = await this.publicacionService.getPublicacion();
     console.log('Publicaciones cargadas:', this.agenda);
-
-
   }
 
 }

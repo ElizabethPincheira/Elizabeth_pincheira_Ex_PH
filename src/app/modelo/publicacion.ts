@@ -1,8 +1,5 @@
-export class Publicacion{
-    constructor(
-        public titulo : String = '',
-        public descripcion : String = '',
-        public imagen : String =''
-    ){
-    }
+export interface Publicacion {
+    titulo: string;
+    descripcion: string;
+    imagen: string;
 }

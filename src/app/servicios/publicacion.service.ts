@@ -21,6 +21,10 @@ private clave = "AGENDA";
   //recuperar
   async getPublicacion():Promise<Publicacion[]> {
     const listado = await Preferences.get({key: this.clave })
+
+    console.log("-------------------")
+    console.log(JSON.stringify(listado))
+    console.log("-------------------")
     return JSON.parse(listado.value ?? "[]");
   }
 
