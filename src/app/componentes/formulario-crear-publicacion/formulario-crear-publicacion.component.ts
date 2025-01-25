@@ -1,19 +1,21 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { IonInput, IonItem, IonButton, IonIcon, IonThumbnail } from '@ionic/angular/standalone';
+import { IonicModule } from '@ionic/angular';
 import { addIcons } from 'ionicons'
 import { cameraOutline } from 'ionicons/icons'
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Publicacion } from 'src/app/modelo/publicacion';
+import { Camera, CameraResultType } from '@capacitor/camera';
 
 @Component({
   selector: 'app-formulario-crear-publicacion',
   templateUrl: './formulario-crear-publicacion.component.html',
   styleUrls: ['./formulario-crear-publicacion.component.scss'],
   standalone: true,
-  imports: [IonInput, IonItem, IonButton, IonIcon, IonThumbnail, FormsModule, CommonModule]
+  imports: [ FormsModule, CommonModule, IonicModule]
 })
 export class FormularioCrearPublicacionComponent implements OnInit {
+fotos:string[]= []
 
 
   @Output() onCreate = new EventEmitter<{ titulo: string, descripcion: string }>();
@@ -33,6 +35,22 @@ export class FormularioCrearPublicacionComponent implements OnInit {
   constructor() {
     addIcons({ cameraOutline });
   }
+
+
+  async tomarFoto() {
+    CameraResultType
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: false,
+      resultType: CameraResultType.Base64
+    })
+ 
+    if( image.base64String != null || image.base64String != undefined){
+      this.fotos.push(image.base64String)
+    }
+}
+
+
 
   ngOnInit() { }
 
